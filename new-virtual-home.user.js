@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          EVO - Bottone Marcatempo Virtuale (HOME)
 // @namespace     https://unibo.it/
-// @version       1.3
+// @version       1.4
 // @description   Aggiunge il bottone "TeleLavoro" per il Marcatempo Virtuale accanto al titolo "Timbrature di giornata" nella Home
 // @author        Stefano
 // @match         https://personale-unibo.hrgpi.it/*
@@ -14,8 +14,42 @@
     'use strict';
 
     /**
-     * Crea e inserisce il bottone "TeleLavoro" per il Marcatempo Virtuale
+     * Inietta CSS per nascondere il testo dei bottoni su mobile (solo icona)
      */
+    function injectButtonCSS() {
+        if (document.getElementById('evo-btn-mobile-css')) return;
+
+        const style = document.createElement('style');
+        style.id = 'evo-btn-mobile-css';
+        style.innerHTML = `
+            /* Desktop: tutto visibile */
+            .evo-btn-label-telelavoro,
+            .evo-btn-label-timb-mancanti {
+                display: inline;
+            }
+
+            /* Mobile: solo icona, testo nascosto */
+            @media (max-width: 1024px) and (orientation: portrait),
+                   (max-width: 768px),
+                   (hover: none) and (pointer: coarse) {
+                .evo-btn-label-telelavoro,
+                .evo-btn-label-timb-mancanti {
+                    display: none !important;
+                }
+
+                #TeleLavoroMarcatempoBtn,
+                #TimbMacantiBtn {
+                    padding: 0.4rem 0.6rem !important;
+                }
+
+                #TeleLavoroMarcatempoBtn .material-symbols-outlined,
+                #TimbMacantiBtn .material-symbols-outlined {
+                    font-size: 1.6rem !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
     function addTeleLavoroButton() {
         // Trova il titolo "Timbrature di giornata"
         const h4Elements = document.querySelectorAll('h4');
@@ -91,7 +125,8 @@
         // Aggiungi l'icona e il testo
         button.innerHTML = `
             <i class="material-symbols-outlined align-middle" style="font-size: 1.2rem;">add</i>
-            &nbsp;TeleLavoro
+            <i class="material-symbols-outlined align-middle" style="font-size: 1.2rem;">home_work</i>
+            <span class="evo-btn-label-telelavoro">&nbsp;TeleLavoro</span>
         `;
 
         form.appendChild(button);
@@ -131,6 +166,7 @@
         
         if (isDashboardPage && isClockingsCard) {
             clearInterval(waitForPageElements);
+            injectButtonCSS();
             addTeleLavoroButton();
             console.log('Script Bottone Marcatempo Virtuale caricato');
         }
