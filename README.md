@@ -1,18 +1,18 @@
 # EVO - Bottone Marcatempo Virtuale (HOME)
 
-Questo script Tampermonkey/Greasemonkey è progettato per il sistema di gestione delle presenze EVO (usato su `https://personale-unibo.hrgpi.it/`). Aggiunge un bottone **"Nuovo"** accanto al titolo **"Timbrature di giornata"** nella pagina HOME/Dashboard, permettendo di accedere rapidamente alla creazione di una nuova richiesta di Marcatempo Virtuale senza dover navigare attraverso il menu laterale.
+Questo script Tampermonkey/Greasemonkey è progettato per il sistema di gestione delle presenze EVO (usato su `https://personale-unibo.hrgpi.it/`). Aggiunge un bottone **"TeleLavoro"** accanto al titolo **"Timbrature di giornata"** nella pagina HOME/Dashboard, permettendo di accedere rapidamente alla creazione di una nuova richiesta di Marcatempo Virtuale senza dover navigare attraverso il menu laterale.
 
-**(Versione Script: 1.0)**
+**(Versione Script: 1.4)**
 
 ## Caratteristiche
 
 * **Accesso Rapido al Marcatempo Virtuale:**
-    * Aggiunge un bottone **"Nuovo"** direttamente nella pagina HOME, accanto al titolo "Timbrature di giornata".
+    * Aggiunge un bottone **"TeleLavoro"** direttamente nella pagina HOME, accanto al titolo "Timbrature di giornata".
     * Elimina la necessità di cliccare sulla sidebar → "Le mie presenze" → "Marcatempo virtuale" → bottone "Nuovo".
     * **Un solo click** per accedere alla pagina di creazione di una nuova timbratura virtuale.
 * **Design Integrato:**
     * Il bottone utilizza lo **stesso stile** dei bottoni nativi del portale EVO (classe `bottone bottone-plus`).
-    * Include l'**icona Material "add"** seguita dal testo "Nuovo".
+    * Include l'**icona Material "add"** seguita dal testo "TeleLavoro".
     * Dimensioni e spaziature ottimizzate per integrarsi perfettamente con l'interfaccia esistente.
     * Tooltip "Nuovo Marcatempo" al passaggio del mouse.
 * **Posizionamento Intuitivo:**
