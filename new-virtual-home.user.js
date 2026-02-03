@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name          EVO - Bottone Marcatempo Virtuale (HOME)
 // @namespace     https://unibo.it/
-// @version       1.2
-// @description   Aggiunge il bottone "Nuovo" per il Marcatempo Virtuale accanto al titolo "Timbrature di giornata" nella Home
+// @version       1.3
+// @description   Aggiunge il bottone "TeleLavoro" per il Marcatempo Virtuale accanto al titolo "Timbrature di giornata" nella Home
 // @author        Stefano
 // @match         https://personale-unibo.hrgpi.it/*
 // @icon          https://www.unibo.it/favicon.ico
@@ -14,9 +14,9 @@
     'use strict';
 
     /**
-     * Crea e inserisce il bottone "Nuovo" per il Marcatempo Virtuale
+     * Crea e inserisce il bottone "TeleLavoro" per il Marcatempo Virtuale
      */
-    function addNuovoButton() {
+    function addTeleLavoroButton() {
         // Trova il titolo "Timbrature di giornata"
         const h4Elements = document.querySelectorAll('h4');
         let clockingsTitle = null;
@@ -34,7 +34,7 @@
         }
 
         // Verifica che il bottone non sia già stato aggiunto
-        if (clockingsTitle.querySelector('#nuovoMarcatempoBtn')) {
+        if (clockingsTitle.querySelector('#TeleLavoroMarcatempoBtn')) {
             console.log('Bottone già presente');
             return;
         }
@@ -74,16 +74,16 @@
         originInput.value = 'dashboard.do';
         form.appendChild(originInput);
 
-        // Crea il bottone "Nuovo"
+        // Crea il bottone "TeleLavoro"
         const button = document.createElement('button');
-        button.id = 'nuovoMarcatempoBtn';
+        button.id = 'TeleLavoroMarcatempoBtn';
         button.type = 'submit';
         button.className = 'bottone bottone-plus';
         button.name = 'event_Create';
-        button.value = 'Nuovo';
+        button.value = 'TeleLavoro';
         button.setAttribute('data-bs-toggle', 'tooltip');
         button.setAttribute('data-bs-custom-class', 'custom-tooltip');
-        button.setAttribute('data-bs-title', 'Nuovo Marcatempo');
+        button.setAttribute('data-bs-title', 'TeleLavoro Marcatempo');
         button.style.padding = '0.4rem 0.8rem';
         button.style.fontSize = '0.9rem';
         button.style.marginLeft = '0.5rem';
@@ -114,7 +114,7 @@
         // Aggiungi il form con il bottone
         clockingsTitle.appendChild(form);
 
-        console.log('Bottone "Nuovo" aggiunto con successo');
+        console.log('Bottone "TeleLavoro" aggiunto con successo');
 
         // Inizializza il tooltip di Bootstrap se disponibile
         if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
@@ -131,7 +131,7 @@
         
         if (isDashboardPage && isClockingsCard) {
             clearInterval(waitForPageElements);
-            addNuovoButton();
+            addTeleLavoroButton();
             console.log('Script Bottone Marcatempo Virtuale caricato');
         }
     }, 500);
