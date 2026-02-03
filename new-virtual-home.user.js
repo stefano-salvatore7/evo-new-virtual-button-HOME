@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          EVO - Bottone Marcatempo Virtuale (HOME)
 // @namespace     https://unibo.it/
-// @version       1.1
+// @version       1.2
 // @description   Aggiunge il bottone "Nuovo" per il Marcatempo Virtuale accanto al titolo "Timbrature di giornata" nella Home
 // @author        Stefano
 // @match         https://personale-unibo.hrgpi.it/*
@@ -80,7 +80,7 @@
         button.type = 'submit';
         button.className = 'bottone bottone-plus';
         button.name = 'event_Create';
-        button.value = 'TeleLavoro';
+        button.value = 'Nuovo';
         button.setAttribute('data-bs-toggle', 'tooltip');
         button.setAttribute('data-bs-custom-class', 'custom-tooltip');
         button.setAttribute('data-bs-title', 'Nuovo Marcatempo');
@@ -91,7 +91,7 @@
         // Aggiungi l'icona e il testo
         button.innerHTML = `
             <i class="material-symbols-outlined align-middle" style="font-size: 1.2rem;">add</i>
-            &nbsp;Nuovo
+            &nbsp;TeleLavoro
         `;
 
         form.appendChild(button);
